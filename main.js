@@ -3,3 +3,4 @@ let age = 33
 alert(userName + " is " + age)
 console.log(userName)
 console.log(userName)
+console.log(age)
