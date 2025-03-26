@@ -1,12 +1,15 @@
 let price = 3000;
-let discount;
-let discountPrice;
+let priceDiscount;
+let discountAmount;
+let discount5 = price * 0.95;
+let discount10 = price * 0.9;
+
 if ((price >= 1000) & (price < 5000)) {
-  discount = price * 0.95;
-  discountPrice = price - discount;
+  priceDiscount = discount5;
+  discountAmount = price - priceDiscount;
 } else if (price >= 5000) {
-  discount = price * 0.9;
-  discountPrice = price - discount;
+  discount = discount10;
+  discountAmount = price - priceDiscount;
 }
-console.log(discount);
-console.log(discountPrice);
+console.log(priceDiscount);
+console.log(discountAmount);
