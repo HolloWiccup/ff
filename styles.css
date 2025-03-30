@@ -1,0 +1,27 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-high{
+  -webkit-box-shadow: 10px 10px 48px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 10px 10px 48px 0px rgba(0,0,0,0.75);
+box-shadow: 10px 10px 48px 0px rgba(0,0,0,0.75);
+}
+
+.task {
+  display: flex;
+}
+
+.done {
+  opacity: 0.7;
+  background-color: rgba(105, 97, 97, 0.582);
+}
