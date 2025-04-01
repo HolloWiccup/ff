@@ -1,29 +1,31 @@
 const todoList = {
-  "Выучить JS": "В процессе",
-  "Купить BMW": "Нужно сделать",
-  "Вывести сайт в топ": "Готово",
+  list: {
+    "Выучить JS": "В процессе",
+    "Купить BMW": "Нужно сделать",
+    "Вывести сайт в топ": "Готово",
+  },
+
+  taskStatus: {
+    statusTodo: "Нужно сделать",
+    statusReady: "Готово",
+    statusProcess: "В процессе",
+  },
+
+  addTask(task) {
+    this.list[task] = this.taskStatus.statusTodo;
+  },
+  deleteTask(task) {
+    delete this.list[task];
+  },
+  changeStatus(task, status) {
+    this.list[task] = status;
+  },
+  showList() {
+    console.log(this.list);
+  },
 };
 
-const taskStatus = {
-  statusTodo: "Нужно сделать",
-  statusReady: "Готово",
-  statusProcess: "В процессе",
-};
-
-function addTask(task) {
-  todoList[task] = "Нужно сделать";
-}
-function deleteTask(task) {
-  delete todoList[task];
-}
-function showList(todoList) {
-  console.log(todoList);
-}
-function changeStatus(task, status) {
-  todoList[task] = status;
-}
-showList(todoList);
-addTask("Написать код");
-deleteTask("Купить BMW");
-changeStatus("Выучить JS", taskStatus.statusTodo);
-showList(todoList);
+todoList.addTask("запилить двери");
+todoList.deleteTask("Выучить JS");
+todoList.changeStatus("Купить BMW", todoList.taskStatus.statusReady);
+todoList.showList();
