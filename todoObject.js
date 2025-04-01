@@ -4,6 +4,12 @@ const todoList = {
   "Вывести сайт в топ": "Готово",
 };
 
+const taskStatus = {
+  statusTodo: "Нужно сделать",
+  statusReady: "Готово",
+  statusProcess: "В процессе",
+};
+
 function addTask(task) {
   todoList[task] = "Нужно сделать";
 }
@@ -13,11 +19,11 @@ function deleteTask(task) {
 function showList(todoList) {
   console.log(todoList);
 }
-function changeStatus(task, taskStatus) {
-  todoList[task] = taskStatus;
+function changeStatus(task, status) {
+  todoList[task] = status;
 }
 showList(todoList);
 addTask("Написать код");
 deleteTask("Купить BMW");
-changeStatus("Выучить JS", "Готово");
+changeStatus("Выучить JS", taskStatus.statusTodo);
 showList(todoList);
