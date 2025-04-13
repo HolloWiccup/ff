@@ -1,0 +1,35 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.app {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.weather {
+    min-width: 400px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.search-form {
+    width: 100%;
+    display: flex;
+}
+
+.search-form input{
+    width: 100%;
+}
+
+.weather-block {
+    padding: 10px;
+    background-color: gray;
+    flex: auto;
+    min-height: 200px;
+}
