@@ -7,11 +7,16 @@
     <title>Document</title>
 </head>
 <div id="container" style="display: flex; justify-content: center; align-items: center; height: 100vh;">
-    <input type="text">
-    <select name="" id=""></select>
-    <input type="text">
+    <input id="operator1" type="text">
+    <select name="selector" id="selector">
+  <option value="+">+</option>
+  <option value="-">-</option>
+  <option value="*">*</option>
+  <option value="/">/</option>
+    </select>
+    <input id="operator2" type="text">
     <button id="resultButton">=</button>
-    <span id="result">0</span>
+    <span id="calculateResult">0</span>
 </div>
 
 <body>
