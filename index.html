@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<div id="container" style="display: flex; justify-content: center; align-items: center; height: 100vh;">
+<body>
+<div id="container" style="display: flex; justify-content: center; align-items: center;">
     <input id="operator1" type="text">
     <select name="selector" id="selector">
   <option value="+">+</option>
@@ -17,9 +18,11 @@
     <input id="operator2" type="text">
     <button id="resultButton">=</button>
     <span id="calculateResult">0</span>
+    <button id="changeBackground" data-color="#e6e6e6">Сменить фон</button>
 </div>
+<div id="resultHistory" style="display: flex; justify-content: center; align-items: center;"></div>
 
-<body>
+
  <script src="main.js"></script>   
 </body>
 </html>
