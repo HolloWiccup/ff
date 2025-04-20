@@ -10,4 +10,10 @@ const UI_CLASS = {
   MEDIUM_ICON: "medium-icon",
 };
 
-export { UI_CLASS };
+const UI_ELEMENTS = {
+  WEATHER_INFO: document.querySelector(`.${UI_CLASS.INFO}`),
+  SEARCH_FORM: document.querySelector(`.${UI_CLASS.FORM}`),
+  FAVOURITE_LIST: document.querySelector(`.${UI_CLASS.LIST}`),
+};
+
+export { UI_CLASS, UI_ELEMENTS };

@@ -1,10 +1,7 @@
-import { UI_CLASS } from "./constants.js";
+import { UI_CLASS, UI_ELEMENTS } from "./constants.js";
 
 const FILL_HEART = "\u2665";
 const EMPTY_HEART = "\u2661";
-
-const weatherInfo = document.querySelector(`.${UI_CLASS.INFO}`);
-const favouriteList = document.querySelector(`.${UI_CLASS.LIST}`);
 
 const renderWeatherInfo = (city, isExist) => {
   const temp = document.createElement("h3");
@@ -24,8 +21,8 @@ const renderWeatherInfo = (city, isExist) => {
   info.classList.add(UI_CLASS.WEATHER_INFO_FOOTER);
   info.append(name, favouriteButton);
 
-  weatherInfo.textContent = "";
-  weatherInfo.append(temp, img, info);
+  UI_ELEMENTS.WEATHER_INFO.textContent = "";
+  UI_ELEMENTS.WEATHER_INFO.append(temp, img, info);
 };
 
 const createForecastItem = (item) => {
@@ -79,8 +76,16 @@ const renderForecast = (forecast, isExist) => {
     .map((item) => createForecastItem(item));
   forecastList.append(...list);
 
-  weatherInfo.textContent = "";
-  weatherInfo.append(temp, feels, sunrise, sunset, img, info, forecastList);
+  UI_ELEMENTS.WEATHER_INFO.textContent = "";
+  UI_ELEMENTS.WEATHER_INFO.append(
+    temp,
+    feels,
+    sunrise,
+    sunset,
+    img,
+    info,
+    forecastList
+  );
 };
 
 const createItemList = (city) => {
@@ -88,7 +93,7 @@ const createItemList = (city) => {
   const name = document.createElement("span");
   const removeButton = document.createElement("button");
 
-  name.textContent = city.name;
+  name.textContent = city;
   name.classList.add(UI_CLASS.LI_NAME);
   removeButton.type = "button";
   removeButton.textContent = "x";
@@ -100,8 +105,8 @@ const createItemList = (city) => {
 
 const renderFavouriteList = (list) => {
   const listUi = list.map((item) => createItemList(item));
-  favouriteList.textContent = "";
-  favouriteList.append(...listUi);
+  UI_ELEMENTS.FAVOURITE_LIST.textContent = "";
+  UI_ELEMENTS.FAVOURITE_LIST.append(...listUi);
 };
 
 export { renderWeatherInfo, renderFavouriteList, renderForecast };

@@ -28,7 +28,6 @@ const getForecastItem = (item) => {
 
 const getForecastNormalize = (forecast) => {
   const list = forecast.list.slice(0, 4).map((item) => getForecastItem(item));
-  const currentTemp = forecast.list[0];
   return {
     name: forecast.city.name,
     sunrise: forecast.city.sunrise * TO_SECONDS,

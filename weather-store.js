@@ -18,19 +18,17 @@ const weatherStore = {
     const json = JSON.stringify(city);
     localStorage.setItem(this.LAST_STORAGE_KEY, json);
   },
-  addCity(city) {
-    this.favouriteList = [...this.favouriteList, city];
+  addCity(cityName) {
+    this.favouriteList = [...this.favouriteList, cityName];
     this.saveFavouriteList();
   },
   removeCity(cityName) {
-    this.favouriteList = this.favouriteList.filter(
-      (item) => item.name !== cityName
-    );
+    this.favouriteList = this.favouriteList.filter((item) => item !== cityName);
     this.saveFavouriteList();
   },
-  cityExist(city) {
-    const cityName = city ? city.name : this.currentCity.name;
-    return this.favouriteList.find((item) => item.name === cityName);
+  cityExist(cityName) {
+    const city = cityName ? cityName : this.currentCity.name;
+    return this.favouriteList.includes(city);
   },
 };
 
