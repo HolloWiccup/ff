@@ -1,79 +1,36 @@
-const defaultCity = {
-  name: "Arh",
-  temp: 15,
-  iconUrl: "https://openweathermap.org/img/wn/10d@4x.png",
-};
-
-const weatherStoreEvents = {
-  cityUpdated: "cityUpdated",
-  favouritesUpdated: "favouritesUpdated",
-};
-
 const weatherStore = {
   LIST_STORAGE_KEY: "weather-favourite-list",
   LAST_STORAGE_KEY: "weather-last-city",
-  lastCity: defaultCity,
+  currentCity: {},
   favouriteList: [],
-  subscribes: {},
-  events: weatherStoreEvents,
-  update(event, data) {
-    if (this.subscribes[event]) {
-      this.subscribes[event].forEach((callback) => callback(data));
-    }
-  },
   init() {
-    const city = localStorage.getItem(this.LAST_STORAGE_KEY);
-    const cities = localStorage.getItem(this.LIST_STORAGE_KEY);
-
-    if (city) {
-      this.setLastCity(JSON.parse(city));
-    } else {
-      this.setLastCity(defaultCity);
-    }
-    if (cities) {
-      this.favouriteList = JSON.parse(cities);
-    }
+    const jsonCity = localStorage.getItem(this.LAST_STORAGE_KEY);
+    const jsonCities = localStorage.getItem(this.LIST_STORAGE_KEY);
+    if (jsonCity) this.currentCity = JSON.parse(jsonCity);
+    if (jsonCities) this.favouriteList = JSON.parse(jsonCities);
   },
-
-  getData(city) {
-    const isExist = this.cityExist(city.name);
-    const data = {
-      city,
-      list: this.favouriteList,
-      isExist,
-      removeClick: (obj) => this.removeCity(obj),
-      addClick: (obj) => this.addCity(obj),
-    };
-    return data;
+  saveFavouriteList() {
+    const json = JSON.stringify(this.favouriteList);
+    localStorage.setItem(this.LIST_STORAGE_KEY, json);
   },
-
-  setLastCity(city) {
-    this.lastCity = city;
+  setCurrentCity(city) {
+    this.currentCity = city;
     const json = JSON.stringify(city);
-    localStorage.setItem(json, this.LAST_STORAGE_KEY);
-    const data = this.getData(city);
-    this.update(this.events.cityUpdated, data);
+    localStorage.setItem(this.LAST_STORAGE_KEY, json);
   },
   addCity(city) {
     this.favouriteList = [...this.favouriteList, city];
-    const data = this.getData(city);
-    this.update(this.events.favouritesUpdated, data);
+    this.saveFavouriteList();
   },
-  removeCity(city) {
-    const newList = this.favouriteList.filter(
-      (item) => item.name !== city.name
+  removeCity(cityName) {
+    this.favouriteList = this.favouriteList.filter(
+      (item) => item.name !== cityName
     );
-    this.favouriteList = newList;
-    const data = this.getData(city);
-    this.update(this.events.favouritesUpdated, data);
+    this.saveFavouriteList();
   },
-  cityExist(cityName) {
-    const result = this.favouriteList.find((item) => item.name === cityName);
-    return result;
-  },
-  addSubscribes(event, callback) {
-    if (!this.subscribes[event]) this.subscribes[event] = [];
-    this.subscribes[event].push(callback);
+  cityExist(city) {
+    const cityName = city ? city.name : this.currentCity.name;
+    return this.favouriteList.find((item) => item.name === cityName);
   },
 };
 
