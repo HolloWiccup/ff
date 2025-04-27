@@ -1,0 +1,51 @@
+h1 {text-align: center;}
+.container {
+    max-width: 300px;
+    margin: 40px auto;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+}
+.taskList {
+  display: flex;
+  line-height: 25px;
+  font-size: 14px;
+  padding-right: 40px;
+  box-sizing: border-box;
+  width: 100%;
+  position: relative;
+}
+.inputHigh, .inputLow {
+    text-align: center;
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+ .taskInput {
+    width: 100%;
+    padding-right: 40px;
+    padding-left: 10px;
+    border-radius: 10px; /* место для кнопки */
+    height: 36px;
+    box-sizing: border-box;
+  }
+ button {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 24px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 16px;
+  color: #888;
+  }
+  .taskList {
+    border: 1px solid;
+    border-radius: 10px;
+    margin-top: 10px;
+    background-color: #ffffff;
+  }
